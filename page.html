@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE WORLD TODAY — Wednesday 18 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #e8e2cf; }
+  body { font-family: "Noto Serif", serif; color: #141414; }
+  .page {
+    width: 1024px; height: 1024px; position: relative; overflow: hidden;
+    margin: 0 auto; background: #f7f3e6;
+    padding: 12px 18px 8px;
+  }
+  .red { color: #b2221c; }
+  .sans { font-family: "DejaVu Sans", sans-serif; }
+
+  /* ---------------- masthead ---------------- */
+  .masthead { position: relative; height: 118px; }
+  .globe { position: absolute; left: 0; top: 4px; width: 88px; height: 88px; }
+  .globe img { width: 88px; height: 88px; border: 1px solid #333; border-radius: 50%; display: block; }
+  .tagline {
+    position: absolute; left: 100px; right: 0; top: 0; text-align: center;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.2px;
+  }
+  .title {
+    position: absolute; left: 100px; right: 0; top: 12px; text-align: center;
+    font-family: "Noto Serif Display Condensed", serif; font-weight: 900;
+    font-size: 92px; line-height: 1; letter-spacing: 1px; white-space: nowrap;
+  }
+  .dateline {
+    position: absolute; left: 0; right: 0; top: 98px;
+    border-top: 1px solid #333; padding-top: 4px;
+    display: flex; justify-content: space-between;
+    font-size: 11.5px; font-weight: 600;
+  }
+  .dateline-rule { position: absolute; left: 0; right: 0; top: 116px; border-top: 2.5px solid #222; }
+
+  /* ---------------- shared story bits ---------------- */
+  .kicker {
+    font-family: "DejaVu Sans", sans-serif; font-weight: 700; color: #b2221c;
+    letter-spacing: 1px; display: flex; align-items: center; gap: 6px;
+  }
+  .kicker::after { content: ""; flex: 1; border-top: 1px solid #b2221c; }
+  .head { font-family: "Noto Serif Display Condensed", serif; font-weight: 700; line-height: 1.1; }
+  .sub { font-style: italic; line-height: 1.25; }
+  .byline { font-style: italic; font-size: 11.5px; }
+  .body { font-size: 10.5px; line-height: 1.28; }
+  .pg { font-style: italic; font-size: 11px; font-weight: 700; }
+  .cap { font-style: italic; font-size: 11px; line-height: 1.25; margin-top: 4px; }
+  .photo { border: 1px solid #333; display: block; object-fit: cover; }
+
+  hr.rule { border: none; border-top: 1px solid #333; margin: 4px 0; }
+  hr.rule2 { border: none; border-top: 2px solid #222; margin: 4px 0; }
+
+  /* ---------------- row 1: lead + Ukraine ---------------- */
+  .row1 { display: flex; gap: 14px; height: 340px; margin-top: 8px; }
+  .lead { width: 242px; flex: none; }
+  .lead .kicker { font-size: 13px; }
+  .lead .head { font-size: 37px; margin-top: 6px; }
+  .lead .sub { font-size: 15.5px; margin-top: 7px; }
+  .lead .byline { margin-top: 7px; }
+  .lead .body { margin-top: 6px; }
+  .lead .pg { margin-top: 6px; }
+  .lead-photo { width: 384px; flex: none; }
+  .lead-photo img { width: 384px; height: 298px; }
+  .ukraine { width: 330px; flex: none; display: flex; gap: 12px; }
+  .uk-text { width: 132px; flex: none; }
+  .uk-text .kicker { font-size: 12px; }
+  .uk-text .head { font-size: 24px; margin-top: 5px; }
+  .uk-text .sub { font-size: 12.5px; margin-top: 6px; }
+  .uk-text .body { margin-top: 6px; font-size: 10px; }
+  .uk-text .pg { margin-top: 6px; }
+  .uk-photo { width: 186px; flex: none; }
+  .uk-photo img { width: 186px; height: 298px; }
+
+  /* ---------------- row 2: three stories ---------------- */
+  .row2 { display: flex; gap: 12px; height: 212px; margin-top: 2px; }
+  .mid { display: flex; flex: none; }
+  .mid1 { width: 420px; } .mid1 .mid-text { width: 200px; } .mid1 .mid-photo img { width: 210px; height: 196px; }
+  .mid2 { width: 344px; } .mid2 .mid-text { width: 136px; } .mid2 .mid-photo img { width: 200px; height: 196px; }
+  .mid3 { width: 196px; } .mid3 .mid-text { width: 118px; } .mid3 .mid-photo img { width: 70px; height: 196px; object-position: 40% 50%; }
+  .mid-text { flex: none; }
+  .mid-photo { flex: none; margin-left: 10px; }
+  .mid2 .mid-photo, .mid3 .mid-photo { margin-left: 8px; }
+  .mid .kicker { font-size: 12px; }
+  .mid1 .head { font-size: 19px; margin-top: 5px; }
+  .mid2 .head { font-size: 15px; margin-top: 5px; }
+  .mid3 .head { font-size: 15px; margin-top: 5px; }
+  .mid1 .sub { font-size: 13px; margin-top: 5px; }
+  .mid2 .sub { font-size: 12.5px; margin-top: 5px; }
+  .mid3 .sub { font-size: 11.5px; margin-top: 5px; }
+  .mid .body { margin-top: 6px; font-size: 10px; }
+  .mid3 .body { font-size: 9.5px; }
+  .mid .pg { margin-top: 6px; }
+
+  /* ---------------- band: world at a glance ---------------- */
+  .band-bar {
+    background: #101e33; color: #fff; height: 22px; margin-top: 2px;
+    display: flex; align-items: center; padding-left: 10px;
+    font-family: "DejaVu Sans", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+  .band-body { display: flex; gap: 12px; margin-top: 4px; height: 100px; }
+  .map { width: 560px; height: 100px; flex: none; position: relative; border: 1px solid #333; }
+  .map img { width: 558px; height: 98px; display: block; }
+  .pin {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: #d21f1a; border: 1.5px solid #fff; transform: translate(-50%, -50%);
+  }
+  .pin-label {
+    position: absolute; font-family: "DejaVu Sans", sans-serif; font-weight: 700;
+    font-size: 11px; color: #111; letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 1px 4px;
+    transform: translateY(-50%); white-space: nowrap;
+  }
+  .briefs { width: 404px; flex: none; display: flex; gap: 10px; }
+  .brief { width: 128px; flex: none; }
+  .brief .num {
+    font-family: "DejaVu Sans", sans-serif; font-weight: 700; font-size: 10.5px;
+    color: #b2221c; letter-spacing: 0.5px;
+  }
+  .brief .bhead { font-weight: 700; font-size: 11px; line-height: 1.15; margin-top: 2px; }
+  .brief .bbody { font-size: 9px; line-height: 1.2; margin-top: 3px; }
+  .brief .pg { font-size: 9.5px; margin-top: 3px; }
+
+  /* ---------------- row 3: four stories ---------------- */
+  .row3 { display: flex; gap: 8px; height: 144px; margin-top: 2px; }
+  .bot { width: 240px; flex: none; display: flex; gap: 8px; }
+  .bot-text { width: 140px; flex: none; }
+  .bot-text .kicker { font-size: 11.5px; }
+  .bot-text .head { font-size: 16px; margin-top: 4px; }
+  .bot-text .body { margin-top: 5px; font-size: 10px; }
+  .bot-text .pg { margin-top: 5px; font-size: 10px; }
+  .bot-photo { width: 92px; flex: none; }
+  .bot-photo img { width: 92px; height: 124px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- masthead -->
+  <div class="masthead">
+    <div class="globe"><img src="assets/proc/globe.png" alt="Globe"></div>
+    <div class="tagline">INTERNATIONAL NEWS &nbsp;•&nbsp; GLOBAL INSIGHTS &nbsp;•&nbsp; A MORE INFORMED WORLD</div>
+    <div class="title">THE WORLD TODAY</div>
+    <div class="dateline">
+      <span>WEDNESDAY, 18 NOVEMBER 2026</span>
+      <span>VOL. 142&nbsp;&nbsp;NO. 31877</span>
+      <span>48 PAGES &nbsp;•&nbsp; SIX CONTINENTS</span>
+    </div>
+    <div class="dateline-rule"></div>
+  </div>
+
+  <!-- row 1 -->
+  <div class="row1">
+    <div class="lead">
+      <div class="kicker">MIDDLE EAST</div>
+      <div class="head">Iran&rsquo;s conflict<br>spreads after<br>US strikes</div>
+      <div class="sub">Missile attacks on Kuwait and Bahrain raise regional fears</div>
+      <div class="byline">By Sarah El Masri</div>
+      <div class="body">Tehran&rsquo;s regional conflict expanded on Tuesday after Iran-backed forces launched missile strikes near US bases in Kuwait and Bahrain, just days after American airstrikes targeted Iranian missile facilities. The escalation has heightened fears of a wider war in the Gulf, with global markets reacting sharply to the growing instability.</div>
+      <div class="pg">PAGE 3 &#9656;</div>
+    </div>
+    <div class="lead-photo">
+      <img class="photo" src="assets/proc/lead.jpg" alt="Missile launches over Kuwait">
+      <div class="cap">Missile launches are seen near a military base in Kuwait on Tuesday.</div>
+    </div>
+    <div class="ukraine">
+      <div class="uk-text">
+        <div class="kicker">UKRAINE</div>
+        <div class="head">Russia hits<br>Odesa, four<br>dead</div>
+        <div class="sub">Air attack damages residential buildings</div>
+        <div class="body">Russian forces launched a major drone and missile attack on Odesa early Wednesday, killing at least four people and injuring more than a dozen others, Ukrainian officials said. The strikes also caused significant damage to civilian infrastructure.</div>
+        <div class="pg">PAGE 5 &#9656;</div>
+      </div>
+      <div class="uk-photo">
+        <img class="photo" src="assets/proc/odesa.jpg" alt="Emergency workers in Odesa">
+        <div class="cap">Emergency workers at the scene in Odesa.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule2">
+
+  <!-- row 2 -->
+  <div class="row2">
+    <div class="mid mid1">
+      <div class="mid-text">
+        <div class="kicker">DIPLOMACY</div>
+        <div class="head">Putin, Xi and Trump<br>set for trilateral<br>talks</div>
+        <div class="sub">Shenzhen summit could reshape global alliances</div>
+        <div class="body">Russian President Vladimir Putin, Chinese President Xi Jinping and US President Donald Trump are expected to meet in Shenzhen this week for high-stakes talks on global security and trade.</div>
+        <div class="pg">PAGE 6 &#9656;</div>
+      </div>
+      <div class="mid-photo"><img class="photo" src="assets/proc/leaders.jpg" alt="Putin, Xi and Trump before their flags"></div>
+    </div>
+    <div class="mid mid2">
+      <div class="mid-text">
+        <div class="kicker">TECHNOLOGY</div>
+        <div class="head">Meta faces scrutiny<br>over AI agent Muse</div>
+        <div class="sub">Security concerns spark fresh debate</div>
+        <div class="body">Meta is facing renewed criticism after details emerged about security risks in its experimental AI agent Muse, raising concerns about data privacy and misuse.</div>
+        <div class="pg">PAGE 12 &#9656;</div>
+      </div>
+      <div class="mid-photo"><img class="photo" src="assets/proc/meta.jpg" alt="Meta logo on a glass building"></div>
+    </div>
+    <div class="mid mid3">
+      <div class="mid-text">
+        <div class="kicker">ECONOMY</div>
+        <div class="head">Germany agrees<br>on electricity<br>tax cut</div>
+        <div class="sub">Relief for households and businesses</div>
+        <div class="body">The German government has reached an agreement to reduce electricity taxes for households and businesses starting next year.</div>
+        <div class="pg">PAGE 14 &#9656;</div>
+      </div>
+      <div class="mid-photo"><img class="photo" src="assets/proc/germany.jpg" alt="German flag before the Reichstag"></div>
+    </div>
+  </div>
+
+  <hr class="rule2">
+
+  <!-- band -->
+  <div class="band-bar">THE WORLD AT A GLANCE &ndash; KEY DEVELOPMENTS</div>
+  <div class="band-body">
+    <div class="map">
+      <img src="assets/proc/world-band.jpg" alt="World map">
+      <div class="pin" style="left:124px; top:28px;"></div>
+      <div class="pin-label" style="left:134px; top:28px;">U.S.</div>
+      <div class="pin" style="left:330px; top:23px;"></div>
+      <div class="pin-label" style="left:330px; top:9px; transform:translate(-50%,-50%);">UKRAINE</div>
+      <div class="pin" style="left:350px; top:38px;"></div>
+      <div class="pin-label" style="left:350px; top:53px; transform:translate(-50%,-50%);">MIDDLE EAST</div>
+      <div class="pin" style="left:443px; top:30px;"></div>
+      <div class="pin-label" style="left:433px; top:30px; transform:translate(-100%,-50%);">ASIA</div>
+    </div>
+    <div class="briefs">
+      <div class="brief">
+        <div class="num">1 &bull; UKRAINE</div>
+        <div class="bhead">EU proposes &euro;45bn loan to Ukraine</div>
+        <div class="bbody">The European Union is advancing a new &euro;45 billion loan package to support Ukraine&rsquo;s budget.</div>
+        <div class="pg">PAGE 8 &#9656;</div>
+      </div>
+      <div class="brief">
+        <div class="num">2 &bull; COP31</div>
+        <div class="bhead">Climate finance at center stage</div>
+        <div class="bbody">Nations push for higher climate funding at COP31 in Brazil.</div>
+        <div class="pg">PAGE 10 &#9656;</div>
+      </div>
+      <div class="brief">
+        <div class="num">3 &bull; MARKETS</div>
+        <div class="bhead">Nvidia posts $115.84bn Q3 revenue</div>
+        <div class="bbody">The chipmaker&rsquo;s results fuel optimism in AI boom.</div>
+        <div class="pg">PAGE 18 &#9656;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule2">
+
+  <!-- row 3 -->
+  <div class="row3">
+    <div class="bot">
+      <div class="bot-text">
+        <div class="kicker">SPACE</div>
+        <div class="head">Voyager 1 nears<br>one light-day<br>from home</div>
+        <div class="body">NASA says the historic probe is now just one light-day from Earth, continuing its journey after 47 years in space.</div>
+        <div class="pg">PAGE 20 &#9656;</div>
+      </div>
+      <div class="bot-photo"><img class="photo" src="assets/proc/voyager.jpg" alt="Voyager 1 probe in space"></div>
+    </div>
+    <div class="bot">
+      <div class="bot-text">
+        <div class="kicker">CLIMATE</div>
+        <div class="head">COP31 puts focus<br>on real action</div>
+        <div class="body">Countries at the climate summit agree on stronger commitments to cut emissions and protect forests.</div>
+        <div class="pg">PAGE 22 &#9656;</div>
+      </div>
+      <div class="bot-photo"><img class="photo" src="assets/proc/cop31.jpg" alt="COP31 Brasil stage"></div>
+    </div>
+    <div class="bot">
+      <div class="bot-text">
+        <div class="kicker">ANTARCTICA</div>
+        <div class="head">Ice loss accelerates<br>across Antarctica</div>
+        <div class="body">New satellite data shows faster ice loss, raising sea level risks worldwide.</div>
+        <div class="pg">PAGE 24 &#9656;</div>
+      </div>
+      <div class="bot-photo"><img class="photo" src="assets/proc/iceberg.jpg" alt="Iceberg in Antarctica"></div>
+    </div>
+    <div class="bot">
+      <div class="bot-text">
+        <div class="kicker">ASIA</div>
+        <div class="head">Japan&rsquo;s economy<br>shows steady growth</div>
+        <div class="body">Japan&rsquo;s economy grew 1.2% in Q3, beating forecasts, official data show.</div>
+        <div class="pg">PAGE 26 &#9656;</div>
+      </div>
+      <div class="bot-photo"><img class="photo" src="assets/proc/fuji.jpg" alt="Mount Fuji and Tokyo"></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
